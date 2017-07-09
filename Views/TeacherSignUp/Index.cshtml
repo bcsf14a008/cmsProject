@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  //<link rel="stylesheet" href="~/Content/style.css">
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+</head>
+
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+<form method="post" action="~/TeacherSignUp/Index1">
+  <header style=" background:#b200ff;">SignUp</header>
+ 
+    @Html.Label("ID")
+  <input name="Id" placeholder="id"  maxlength="10" required/>
+  
+ 
+    @Html.Label("Teacher Name")
+  <input name="name" placeholder="name"  maxlength="40" required/>
+  
+   
+    @Html.Label("Father Name")
+  <input name="fname" placeholder="fname"  maxlength="40" required/>
+    
+    @Html.Label("CNIC")
+  <input type="text" name="cnic" placeholder="cnic" data-minlength="13" maxlength="13"   required/>
+   
+    
+
+    @Html.Label("Address")
+
+  <input name="address" placeholder="address"  maxlength="50" required/>
+
+     @Html.Label("Email")
+  <input type="email" name="email" placeholder="email" data-minlength="40" maxlength="40"   required/>
+   
+
+    
+    @Html.Label("Phone No")
+
+  <input name="phoneNo" type="text" placeholder="phoneNo" data-minlength="11"  maxlength="20" required/>
+  <button style=" background:#b200ff;">SignUp</button>
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["status1"];
+    }
+    
+    @if(s == "true1")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.Teacher ID or CNIC or Email is already exist.');
+
+    </script>
+        Session["status1"] = "false";
+    }
+</html>
+

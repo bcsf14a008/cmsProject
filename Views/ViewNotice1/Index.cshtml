@@ -1,0 +1,61 @@
+﻿@model List<cms.Models.Notice>
+				@{
+                    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+				}
+				
+				
+	
+
+                
+                  <table >
+
+   <tr>
+        
+        
+        
+         <td>
+             <h1>Notice..........</></h1>
+
+         </td>
+        
+      
+         </tr>
+                   
+                     @* @{
+                          DirectoryInfo dir;
+                          StringBuilder sb = new StringBuilder();
+                          
+                          }*@
+           @foreach (var item in Model) {
+           
+   <tr>
+        
+       
+       <td>
+          @* @{
+               string path = @item.filePath;
+               sb.Append("<a href=\"" + item.fileName.ToString() + "\">");
+               sb.Append(item.ToString() + "</a><br />");
+           }*@
+           @*@item.ToString()
+           @Html.ActionLink("Download","Download",new{ImageName=@item.ToString()})*@
+          @* <input type="file" Data-="C:\Users\adeel\Documents\Visual Studio 2012\Projects\cms\cms\Notes\Lec12-14-Process-Creation-and-Termination.pdf" />
+          *@<a href="..\Notes\@item.fileName" class="get-contact"><b><h1 >@item.fileName</h1></b> </a>
+        
+           
+          </td>
+
+       <span></span>
+      
+       
+       
+    </tr>
+        
+    
+           }
+    
+ </table>
+
+
+
+

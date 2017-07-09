@@ -1,0 +1,63 @@
+﻿@model List<cms.Models.AddSubjectToStudent>
+@{
+    ViewBag.Title = "Student";
+}
+
+@{
+                    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+				}
+				
+
+                 <table>
+                    <tr>
+                        <td>
+                            <h1>Subject................................................</h1>
+                        </td>
+                        <td>
+                            <h1>Class...........................................</h1>
+                        </td>
+                         <td>
+                            <h1>Teacher</h1>
+                        </td>
+                    </tr>
+  
+           @foreach (var item in Model) {
+   
+        <form method="post" action="~/ViewNotice1/Index">
+             <tr>
+        <td>
+            
+            
+               <input id="Hidden1" type="hidden" name="name" value="@item.subject" />
+                 <input id="Hidden1" type="hidden" name="password" value="@item.claass" />
+              
+                <h1>@item.subject
+                     </h1>
+                    </td>
+        <td>
+         <h1>
+                    @item.claass
+                     </h1>
+                    </td>
+                   
+                    <td>
+                        <h1>
+                        @item.TeacherName
+                 
+
+                <button >
+                    <h3>View Notes
+                    </h3>
+                </button>
+                 </h1>
+              
+        </td>
+                  </tr>
+        </form>
+      
+   
+          @*<button>Submit</button>*@
+    
+           }
+                    </table>
+			

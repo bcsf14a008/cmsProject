@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html  >
+<head >
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+</head>
+   
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+<form method="post" action="~/ForgotPassword/Index1"   >
+  <header style=" background:#b200ff;">Login</header>
+  <h1><label>ID <span></span></label>
+  <input name="name" placeholder="id"  maxlength="10" required/>
+      </h1>
+  
+ <h1> <label>CNIC <span></span></label>
+  <input type="password" name="password" placeholder="cnic"  maxlength="40" required/></h1>
+  
+  <button style=" background:#b200ff;">Submit</button>
+    
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["status5"];
+       
+    }
+    
+    @if(s == "true5")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.Please try with a valid  ID or valid Password.');
+
+    </script>
+        Session["status5"] = "false";
+    }
+    
+</html>

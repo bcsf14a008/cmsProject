@@ -1,0 +1,184 @@
+﻿@*@model cms.Models.Student*@
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+    @*<script type="text/javascript">
+        function()
+        {
+            var status= '@ViewBag.Status';
+            is(status)
+            {
+                alert("success");
+            }
+            else
+            {
+                alert("error");
+            }
+        }
+    </script>*@
+
+  
+</head>
+
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+    @*@using (Html.BeginForm()) {
+  
+    <fieldset>
+        <legend>Student</legend>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Id)
+            @Html.ValidationMessageFor(model => model.Id)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fname)
+            @Html.ValidationMessageFor(model => model.fname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cnic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cnic)
+            @Html.ValidationMessageFor(model => model.cnic)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.cnic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cnic)
+            @Html.ValidationMessageFor(model => model.cnic)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address)
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.phoneNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneNo)
+            @Html.ValidationMessageFor(model => model.phoneNo)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}*@
+    
+<form method="post" action="~/StudentSignUp/Index1">
+  <header style=" background:#b200ff;">SignUp</header>
+    @Html.Label("ID")
+  
+  
+  <input name="Id" placeholder="id"  maxlength="10" required/>
+
+  @Html.Label("Student Name")
+  
+  <input name="name" placeholder="Name"  maxlength="40" required/>
+  
+    @Html.Label("Father Name")
+  
+   
+  <input name="fname" placeholder="fname"  maxlength="40" required/>
+   
+    @Html.Label("CNIC")
+  
+  <input type="text" data-minlenth="13" maxlength="13"   name="cnic"  placeholder="cnic"  required/>
+    <div id="result"></div>
+     @*@Scripts.Render("~/bundles/jquery")
+                <script>
+
+
+                    $(document).ready(function () {
+
+
+
+                        $('#em').focusout(function () {
+
+                            var email = $('#em').val();
+                            $.getJSON("/StudentSignUp/CheckEmail?Email=" + email, function (data) {
+                                if (data) {
+                                    $('#result').text("CNIC already exists in database");
+                                    $('#SubBtn').hide();
+
+
+                                }
+                                else {
+                                    $('#result').text(" ");
+                                    $('#SubBtn').show();
+
+
+                                }
+                            });
+
+                        });
+
+                    });
+
+                </script>*@
+    @Html.Label("Email")
+  
+  <input type="email" name="email" placeholder="email"  maxlength="40" required/>
+
+    @Html.Label("Address")
+  
+  <input name="address" placeholder="address"  maxlength="40" required/>
+   
+    @Html.Label("Phone No")
+  
+  <input type="text" name="phoneNo" placeholder="phoneNo" data-minlength="11"  maxlength="20" required/>
+  <button style=" background:#b200ff;">SignUp</button>
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["std"];
+    }
+    
+    @if(s == "true")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.Student ID or CNIC or Email is already exist.');
+       
+    </script>
+        Session["std"] = "false";
+    }
+</html>

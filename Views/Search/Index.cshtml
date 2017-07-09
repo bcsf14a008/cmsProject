@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+</head>
+
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+<form method="post" action="~/Search/Index1">
+  <header style=" background:#b200ff;">Search</header>
+ <h1> <label>ID <span></span></label>
+  <input name="name" placeholder="id"  maxlength="10" required/></h1>
+  
+
+  
+  
+  <button style=" background:#b200ff;">Search</button>
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["search1"];
+    }
+    
+    @if(s == "search1")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid ID.Please try with a valid ID.');
+
+    </script>
+        Session["search1"] = "false";
+    }
+</html>
+

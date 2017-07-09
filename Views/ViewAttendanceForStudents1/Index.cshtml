@@ -1,0 +1,51 @@
+﻿@model List<cms.Models.Attendance>
+@{
+    ViewBag.Title = "Student";
+}
+@{
+                    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+				}
+
+
+                
+                  <table >
+
+   <tr>
+        
+        
+        
+         <td>
+             Date..........
+
+         </td>
+        
+       <td>
+             .............Attendnce
+         </td>
+         </tr>
+                   
+           @foreach (var item in Model) {
+           
+   <tr>
+        
+       
+       <td>
+        @item.datee
+           
+          </td>
+
+       <span></span>
+      
+        <td>
+        @item.attendancee
+           
+          </td>
+       
+    </tr>
+        
+    
+           }
+    
+ </table>
+
+			

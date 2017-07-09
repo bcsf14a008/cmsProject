@@ -1,0 +1,247 @@
+﻿@{
+    ViewBag.Title = "Admin";
+}
+
+
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>CMS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<link rel="stylesheet" media="all" href="~/Content/style1.css">
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+    <script type="text/javascript">
+        var can, ctx, step, steps = 0,
+              delay = 20;
+
+        function init() {
+            // init1();
+            can = document.getElementById("MyCanvas1");
+            ctx = can.getContext("2d");
+            ctx.fillStyle = "blue";
+            ctx.font = "30pt Verdana";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            step = 1200;
+            steps = 0;
+            RunTextLeftToRight();
+
+        }
+
+        function RunTextLeftToRight() {
+            step--;
+            ctx.clearRect(0, 0, can.width, can.height);
+            ctx.save();
+            ctx.translate(step, can.height / 2);
+            ctx.fillText("Punjab Universty College of Information Technology Lahore", 0, 0);
+            ctx.restore();
+            if (step == steps)
+                step = 1200;
+            if (step > steps)
+                var t = setTimeout('RunTextLeftToRight()', delay);
+        }
+    </script>
+     <script type="text/javascript">
+         var can, ctx, step = 50, steps = 255;
+         delay = 20;
+         var rgbstep = 50;
+
+         function init1() {
+             can = document.getElementById("MyCanvas1");
+             ctx = can.getContext("2d");
+             ctx.fillStyle = "blue";
+             ctx.font = "40pt Verdana";
+             ctx.textAlign = "center";
+             ctx.textBaseline = "middle";
+             Textfadeup();
+         }
+
+         function Textfadeup() {
+             rgbstep++;
+             ctx.clearRect(0, 0, can.width, can.height);
+             ctx.fillStyle = "rgb(" + rgbstep + "," + rgbstep + "," + rgbstep + ")"
+             ctx.fillText("Welcome To @Session["id"]", 250, 40);
+             if (rgbstep < 255)
+                 var t = setTimeout('Textfadeup()', 10);
+             if (rgbstep == 255) {
+                 Textfadedown();
+             }
+         }
+         function Textfadedown() {
+             rgbstep = rgbstep - 1;
+             ctx.clearRect(0, 0, can.width, can.height);
+             ctx.fillStyle = "rgb(" + rgbstep + "," + rgbstep + "," + rgbstep + ")"
+             ctx.fillText("Welcome To @Session["id"] Asghar Asgahr", 250, 40);
+             if (rgbstep > 80)
+                 var t = setTimeout('Textfadedown()', 10);
+             if (rgbstep == 80) {
+                 Textfadeup();
+             }
+         }
+    </script>
+ 
+
+</head>
+<body style=" background:url(../Images/f.jpg) no-repeat ;  " onload="init();" >
+   
+	<header id="header" >
+		<div class="container">
+			<a href="index.html" id="logo" title="CMS">HarrisonHighSchool</a>
+			
+			<div class="menu-trigger"></div>
+			<nav id="menu">
+                 <h3 style="font-size: 50px;"><p style="text-align:center;  color:blue; height:5;" class="text" ><b >Welcome @Session["id"]</b></p></h3>
+                
+               
+              
+                  <div class="subdiv">
+        <canvas id="MyCanvas1" width="1200" height="80">
+  This browser or document mode doesn't support canvas object</canvas>
+        
+    </div>
+				
+				
+				
+				<ul style="list-style-type:none; margin:0; padding:0; overflow: hidden; background-color:#333;">
+					<li style="float:left;"><a href="~/Admin/Admin" style="display:block; color:white; text-align:center; padding:14px 16px; text-decoration:none; background-color: #111;">Home</a></li>
+                    <li style="float:left;"><a href="~/addSubjectToTeacher/Index" style="display:block; color:white; text-align:center; padding:14px 16px; text-decoration:none; background-color: #111;">Add Subject To Teacher</a></li>
+					<li style="float:left;"><a href="~/addSubjectToStudent/Index" style="display:block; color:white; text-align:center; padding:14px 16px; text-decoration:none; background-color: #111;">Add Subject To Student</a></li>
+                   
+					
+					
+					 <li><a href="~/Home/Index" class="get-contact" style="display:block; color:white; text-align:center; padding:14px 16px; text-decoration:none; background-color: #111;">Logout</a></li>
+                       				</ul>
+			</nav>
+          
+           
+			<!-- / navigation -->
+		</div>
+		<!-- / container -->
+
+
+       
+	
+	</header>
+	<!-- / header -->
+	<h3 style="font-size: 55px; margin-top: 35px;"><p style="text-align:center;  color:blue; height:0;" class="text" ><b >Open Source Educational Platform</b></p></h3>
+                
+    
+                 
+              
+	<div class="slider" style="margin-top: 70px;">
+        
+		<img style="float:left; margin-left: 565px; margin-top: 120px;"  src="~/Images/pic_slide.jpg" alt="banner" />   
+		<div class="bg-bottom"></div>
+        
+	</div>
+	 
+	<section class="posts">
+		<div class="container">
+			<article>
+				<div class="pic"><img width="121" src="~/Images/2.png" alt=""></div>
+				<div class="info">
+					<h3>The best learning methods</h3>
+					<p>1. Making and Keeping a Study Schedule<br /> 2. Studying in an Appropriate Setting — Same Time, Same Place, Every Day<br/> 3. Equipping Your Study Area With All the Materials You Need<br />4. Not Relying on Inspiration for Motivation<br />5. Keeping a Well-Kept Notebook Improves Grades
+                        <br />6. Keeping a Careful Record of Assignments<br />7. Making Use of “Trade Secrets”<br />8. Taking Good Notes as Insurance Against Forgetting<br />
+                        9. Overlearning Material Enhances Memory<br />10. Reviewing Material Frequently
+					</p>
+				</div>
+			</article>
+			<article>
+				<div class="pic"><img width="121" src="~/Images/3.png" alt=""></div>
+				<div class="info">
+					<h3>Awesome results of our students</h3>
+					<p>During the 2015/2016 Universty year, Universty on Wheels served 428 students experiencing homelessness and provided 7,972 hours of one-on-one tutoring. That’s over 60 more students than last year!<br />
+
+We also served 239 parents with 1,788 consultations – including workshops, parent meetings, communication with teachers and more – in order to equip them with the tools necessary to be the best advocates for their children’s education.<br />
+
+This year, 462 volunteer tutors gave their time to provide our students with the assistance they need to succeed academically – and we are seeing great results from these academic intervention programs!</p>
+				</div>
+			</article>
+		</div>
+        <!-- / container -->
+	</section>
+
+	
+
+	
+
+	<footer id="footer">
+		<div class="container">
+			<section>
+				<article class="col-1">
+					<h3>Contact</h3>
+					<ul>
+						<li class="address"><a href="#">PUCIT Old Campus<br>New Anarkali Lahore
+						                    </a></li>
+						<li class="mail"><a href="#">adeelasghar655l@gmail.com</a></li>
+						<li class="phone last"><a href="#">(051) 0303 735 143 0</a></li>
+					</ul>
+				</article>
+				<article class="col-2">
+					<h3>Forum topics</h3>
+					<ul>
+						<li><a href="#">General Discussion</a></li>
+						<li><a href="#">The Family Court Ststem</a></li>
+						<li><a href="#">Adult StepChildren Issues </a></li>
+						<li><a href="#">Co-Parenting</a></li>
+						<li class="last"><a href="#">New Membership Issues</a></li>
+					</ul>
+				</article>
+				<article class="col-3">
+					<h3>Social media</h3>
+					<p>Any time you can contact us through Facebook,<br />Twitter,<br />Google+ and Pinterest.</p>
+					<ul>
+						<li class="facebook"><a href="#">Facebook</a></li>
+                        <li class="google-plus"><a href="#">Google+</a></li>
+						<li class="twitter"><a href="#">Twitter</a></li>
+						<li class="pinterest"><a href="#">Pinterest</a></li>
+					</ul>
+				</article>
+				<article class="col-4">
+					<h3>Newsletter</h3>
+					<p>Assumenda est omnis dolor repellendus temporibus autem quibusdam.</p>
+					<form action="#">
+						<input placeholder="Email address..." type="text">
+						<button type="submit">Subscribe</button>
+					</form>
+					<ul>
+						<li><a href="#"></a></li>
+					</ul>
+				</article>
+			</section>
+			<p class="copy">Copyright 2014 CMS. Designed by <a href="#" title="Designed by Vandelay Design" target="_blank">Adeel Asghar</a>. All rights reserved.</p>
+		</div>
+        </footer> 
+		<!-- / container -->
+	
+	<!-- / footer -->
+    
+	<div id="fancy">
+		<h2>Request information</h2>
+		<form action="#">
+			<div class="left">
+				<fieldset class="mail"><input placeholder="Email address..." type="text"></fieldset>
+				<fieldset class="name"><input placeholder="Name..." type="text"></fieldset>
+				<fieldset class="subject"><select><option>Choose subject...</option><option>Choose subject...</option><option>Choose subject...</option></select></fieldset>
+			</div>
+			<div class="right">
+				<fieldset class="question"><textarea placeholder="Question..."></textarea></fieldset>
+			</div>
+			<div class="btn-holder">
+				<button class="btn blue" type="submit">Send request</button>
+			</div>
+		</form>
+	</div>
+
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script>window.jQuery || document.write("<script src='js/jquery-1.11.1.min.js'>\x3C/script>")</script>
+	<script src="~/Fonts/plugins.js"></script>
+	<script src="~/Fonts/main.js"></script>
+</body>
+</html>

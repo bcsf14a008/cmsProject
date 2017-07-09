@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html  >
+<head >
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+</head>
+   
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+<form method="post" action="~/Home/Index1"   >
+  <header style=" background:#b200ff;">Login</header>
+  <h1><label>ID <span></span></label>
+  <input name="name" placeholder="id"  maxlength="10" required/>
+      </h1>
+  
+ <h1> <label>Password <span></span></label>
+  <input type="password" name="password" placeholder="password"  maxlength="40" required/></h1>
+  
+  <button style=" background:#b200ff;">Login</button>
+    <h3><a href="~/ForgotPassword/Index" >Forgot Password</a></h3>
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["status5"];
+       
+    }
+    
+    @if(s == "true5")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.Please try with a valid  ID or valid Password.');
+
+    </script>
+        Session["status5"] = "false";
+    }
+
+     @{
+         s = (string)Session["TeacherForgotPassword"];
+       
+    }
+    
+    @if (s == "TeacherForgotPassword")
+    {
+    <script  type='text/javascript'>
+        alert('Your Password is sent to your Email.Please try with a valid Password.');
+
+    </script>
+        Session["TeacherForgotPassword"] = "false";
+    }
+    
+     @{
+         s = (string)Session["StudentForgotPassword"];
+       
+    }
+    
+    @if (s == "StudentForgotPassword")
+    {
+    <script  type='text/javascript'>
+        alert('Your Password is sent to your Email.Please try with a valid Password.');
+
+    </script>
+        Session["StudentForgotPassword"] = "false";
+    }
+    
+     @{
+         s = (string)Session["WrongCnic"];
+       
+    }
+    
+    @if (s == "WrongCnic")
+    {
+    <script  type='text/javascript'>
+        alert('You Enter a Wrong CNIC.Please enter a valid CNIC.');
+
+    </script>
+        Session["WrongCnic"] = "false";
+    }
+    
+     @{
+         s = (string)Session["WrongId"];
+       
+    }
+    
+    @if (s == "WrongId")
+    {
+    <script  type='text/javascript'>
+        alert('You Enter a Wrong ID.Please enter a valid ID.');
+
+    </script>
+        Session["WrongId"] = "false";
+    }
+    
+</html>

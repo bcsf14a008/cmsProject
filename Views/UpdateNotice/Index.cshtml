@@ -1,0 +1,90 @@
+﻿@*@model IEnumerable<FileInfo>*@
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+ </head>
+   @* <script runat = "server" >
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            if(FileUpload1.HasFile)
+            {
+                SaveFile(FileUpload1.PostedFile);
+            }
+            else
+            {
+                UploadStatusLabel.Text="You did not chose a file";
+            }
+        }
+        void SaveFile(HttpPostFile file)
+        {
+            string  savePath = "C:\Users\adeel\Documents\Visual Studio 2012\Projects\cms\cms\files\";
+            string fileName =FileUpload1.FileName;
+            if(System.IO.File.Exists(pathToCheck))
+            {}
+            else
+            {
+            savePath += fileName ;
+            FileUpload1.SaveAs(savePath);
+        }
+                
+    </script>
+   *@
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+<form method="post" action="~/UpdateNotice/Index1" enctype="multipart/form-data" runat="server" >
+  <header style=" background:#b200ff;">Update Notice</header>
+ <h1> <label>Upload a File <span></span></label></h1>
+ @*@foreach (var m in Model)
+ {
+     @m
+ }*@
+    <input  type="file" name="notice1" />
+    
+   @* <asp:fileupload id="a" runat="server" />*@
+
+    @*<dialog id="fileUpload" >
+
+    </dialog>*@
+
+ @* <label>Select a File <span></span></label>
+    <asp:FileUpload id="FileUpload1" runat="server" >
+       </asp:FileUpload>*@
+
+   @*< button id="UploadButton" Text="Text File" OnClick="UploadButton_Click" runat="server" >
+
+   </>*@
+@*    <label id="UploadStatusLabel" runat="server" />*@
+   @* @{
+        string abc = (string)Session["asd"];
+    }
+    <input type="file" name="notice12"  value="@abc"/>*@
+   
+  <button style=" background:#b200ff;">Submit</button>
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["pdf"];
+    }
+    
+    @if(s == "pdf")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid File Selected.Please try with a valid File Format.');
+
+    </script>
+        Session["pdf"] = "false";
+    }
+</html>

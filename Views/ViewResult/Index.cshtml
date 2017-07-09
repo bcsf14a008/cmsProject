@@ -1,0 +1,61 @@
+﻿@model List<cms.Models.Mark>
+@{
+    ViewBag.Title = "Student";
+}
+@{
+                    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+				}
+
+
+
+                
+         <table >
+
+   <tr>
+        
+        
+        
+         <td>
+            <h1> Subject................................................................
+                </h1>
+
+         </td>
+        
+       <td>
+            <h1> Marks...................................</h1>
+         </td>
+       <td>
+            <h1> Grades</h1>
+         </td>
+         </tr>
+	
+      @foreach (var item in Model) {
+    <tr>
+        <td>
+         <h1>  @item.subject</h1>
+            <span></span>
+        </td>
+        <td>
+          <h1> @item.marks</h1>
+            <span></span>
+        </td>
+         <td>
+          <h1> @item.grade</h1>
+            <span></span>
+        </td>
+        
+       
+    </tr>
+              
+}
+<tr>
+    <td>
+    <h1>..............................................</h1></td>
+    </tr>
+             <tr>
+                 <td>
+  <h1>GPA= @Session["gpa"]</h1>
+                     </td>
+    </tr>
+</table>
+			

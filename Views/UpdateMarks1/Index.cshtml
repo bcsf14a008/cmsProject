@@ -1,0 +1,62 @@
+﻿@model List<cms.Models.AddSubjectToStudent>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+</head>
+
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+	<!-- / header -->
+	<form method="post" action="~/UpdateMarks1/Index1">
+  <header style=" background:#b200ff;">Update Marks</header>
+      <h1>  <label>Id <span></span></label>
+  <select name="rolNo" >
+       @foreach (var item in  Model) {
+                 <option value="@item.StudentId">
+          @item.StudentId
+        </option>
+       }
+  
+   </select>
+           </h1><h1>
+        <label>Activity <span></span></label>
+       <select name="activity" >
+      
+                 <option value=mid>
+          Mid
+        </option>
+             <option value=final>
+          Final
+        </option>
+             <option value=sessional>
+          Sessional
+        </option>
+      
+  
+   </select>
+          </h1><h1>
+        @Html.Label("Obtained Marks")</h1>
+        <input name="marks" type="number" placeholder="obtained marks"   required/>
+ <h1>
+     @Html.Label("Total Marks")
+        </h1>
+        <input name="totalmarks" type="number" placeholder="total marks"   required/>
+  
+  
+  <button style=" background:#b200ff;">Submit</button>
+</form>
+
+	</body>
+    
+</html>

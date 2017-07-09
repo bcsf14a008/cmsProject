@@ -1,0 +1,101 @@
+﻿@model List<cms.Models.Teacher>
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+
+  
+</head>
+
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+<form method="post" action="~/addSubjectToTeacher/Index1">
+  <header style=" background:#b200ff;">Add Subject</header>
+    <h1>
+        @Html.Label("Teacher Name")
+    <select name="TeacherName" >
+       @foreach (var item in Model) {
+   
+            
+           
+                 <option value="@item.name">
+           @item.name
+        </option>
+       }
+  
+   </select></h1>
+  
+ <h1> 
+     @Html.Label("Subject")
+  <select name="subject" >
+        <option value="Artificial Intelligience">
+           Artificial Intelligience
+        </option>
+      <option value="Communication Skills">
+           Communication Skills
+        </option>
+      <option value="EAD">
+          EnterPrize Application Development
+        </option>
+       <option value="Linear Algebra">
+           Linear Algebra
+        </option>
+       <option value="Psychology">
+           Psychology
+        </option>
+        <option value="System Programming">
+           System Programming
+        </option>
+    </select></h1>
+  
+     <h1> 
+         @Html.Label("Class") 
+    <span></span>
+   <select name="claass" >
+        <option value="BSCS F14 Morning">
+           BSCS F14 Morning
+        </option>
+        <option value="BSCS F14 Afternoon">
+           BSCS F14 Afternoon
+        </option>
+        <option value="BSSE F14 Morning">
+           BSSE F14 Morning
+        </option>
+        <option value="BSSE F14 Afternoon">
+           BSSE F14 Afternoon
+        </option>
+        <option value="BSIT F14 Morning">
+           BSIT F14 Morning
+        </option>
+        <option value="BSIT F14 Afternoon">
+           BSIT F14 Afternoon
+        </option>
+     
+    </select></h1>
+    <h1></h1>
+  <button style=" background:#b200ff;">Add Subject</button>
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["status2"];
+    }
+    
+    @if(s == "true2")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.This Subject is already assigned to the particular teacher of given class.');
+
+    </script>
+        Session["status2"] = "false";
+    }
+</html>
