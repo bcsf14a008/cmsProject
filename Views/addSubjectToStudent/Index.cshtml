@@ -115,4 +115,17 @@
     </script>
         Session["status3"] = "false";
     }
+
+    @{
+        s = (string)Session["status3error"];
+    }
+    
+    @if (s == "status3error")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.This Subject isnot assigned to the particular Teacher.');
+
+    </script>
+        Session["status3error"] = "false";
+    }
 </html>

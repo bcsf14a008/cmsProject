@@ -1,0 +1,91 @@
+﻿@model cms.Models.Student
+@*@model cms.Models.Student*@
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>CMS</title>
+  
+  
+  
+      <link rel="stylesheet" href="~/Content/style.css">
+    <script type="text/javascript" src="~/Scripts/jq.js"></Script>
+    
+
+  
+</head>
+
+<body style=" background:url(../Images/b.jpg) no-repeat ;  ">
+  
+   
+    
+<form method="post" action="~/UpdateDeleteStudent/Index3">
+  <header style=" background:#b200ff;">SignUp</header>
+  
+
+     <input type="hidden" name="Id" value="@Session["searchId"]"  />    
+
+  @Html.Label("Student Name")
+  
+  <input name="name" value="@Session["searchname"]" placeholder="Name"  maxlength="40" required/>
+  
+   
+
+    @Html.Label("Father Name")
+  
+   
+  <input name="fname" value="@Session["searchfname"]" placeholder="fname"  maxlength="40" required/>
+
+    
+   
+    @Html.Label("CNIC")
+  
+  <input type="number" value="@Session["searchcnic"]" id="em" max="9999999999999"  min="1000000000000"   name="cnic"  @*placeholder="cnic"*@  required/>
+ 
+    @Html.Label("Email")
+  
+  <input type="email"id="email" value="@Session["email"]" name="email" @*placeholder="email"*@  maxlength="40" required/>
+    
+
+
+
+
+    @Html.Label("Address")
+  
+  <input name="address" value="@Session["searchaddress"]" placeholder="address"  maxlength="40" required/>
+
+   
+   
+    @Html.Label("Phone No")
+  
+  <input type="number" value="@Session["searchphoneNo"]" max="99999999999999999999"  min="100000000" name="phoneNo" placeholder="phoneNo"  required/>
+  
+     
+    <button style=" background:#b200ff;">Update</button>
+
+     @*<button style=" background:#b200ff;">Delete</button>*@
+   
+      <a href="~/UpdateDeleteStudent/Index2" >Delete</a>
+
+</form>
+  
+  
+</body>
+    @{
+        string s =(string)Session["std"];
+    }
+    
+    @if(s == "true")
+    {
+    <script  type='text/javascript'>
+        alert('Invalid Entry.Student ID or CNIC or Email is already exist.');
+       
+    </script>
+        Session["std"] = "false";
+    }
+</html>
+

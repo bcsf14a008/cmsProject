@@ -1,4 +1,5 @@
-﻿@{
+﻿@model cms.Models.Teacher
+@{
     ViewBag.Title = "Index";
 }
 
@@ -11,44 +12,178 @@
   //<link rel="stylesheet" href="~/Content/style.css">
   
       <link rel="stylesheet" href="~/Content/style.css">
+      <script type="text/javascript" src="~/Scripts/jq.js"></Script>
 
   
 </head>
 
 <body style=" background:url(../Images/b.jpg) no-repeat ;  ">
   
-<form method="post" action="~/TeacherSignUp/Index1">
+<form method="post" action="~/TeacherSignUp/Index">
   <header style=" background:#b200ff;">SignUp</header>
  
     @Html.Label("ID")
-  <input name="Id" placeholder="id"  maxlength="10" required/>
+  <input name="Id" id="a"   maxlength="10" required/>
+    <div id="result1"></div>
+     
+                <script>
+
+
+                    $(document).ready(function () {
+
+
+
+                        $('#a').focusout(function () {
+
+                            var email1 = $('#a').val();
+                            $.getJSON("/TeacherSignUp/CheckId?Id=" + email1, function (data) {
+                                if (data) {
+                                    $('#result1').text("Id already exists in database");
+                                    $('#SubBtn').hide();
+
+
+                                }
+                                else {
+                                    $('#result1').text("Correct Id. Id does not exists in database");
+                                    $('#SubBtn').show();
+
+
+                                }
+                            });
+
+                        });
+
+                    });
+
+                </script>
   
  
-    @Html.Label("Teacher Name")
-  <input name="name" placeholder="name"  maxlength="40" required/>
+   @* @Html.Label("Teacher Name")
+  <input name="name" placeholder="name"  maxlength="40" required/>*@
+
+     <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
   
    
-    @Html.Label("Father Name")
-  <input name="fname" placeholder="fname"  maxlength="40" required/>
+   @* @Html.Label("Father Name")
+  <input name="fname" placeholder="fname"  maxlength="40" required/>*@
+
+     <div class="editor-label">
+            @Html.LabelFor(model => model.fname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fname)
+            @Html.ValidationMessageFor(model => model.fname)
+        </div>
     
     @Html.Label("CNIC")
-  <input type="text" name="cnic" placeholder="cnic" data-minlength="13" maxlength="13"   required/>
+  <input type="number" id="b" max="9999999999999"  min="1000000000000" name="cnic"    required/>
    
-    
+     <div id="result2"></div>
+     
+                <script>
 
-    @Html.Label("Address")
 
-  <input name="address" placeholder="address"  maxlength="50" required/>
+                    $(document).ready(function () {
+
+
+
+                        $('#b').focusout(function () {
+
+                            var email1 = $('#b').val();
+                            $.getJSON("/TeacherSignUp/Checkcnic?cnic=" + email1, function (data) {
+                                if (data) {
+                                    $('#result2').text("CNIC already exists in database");
+                                    $('#SubBtn').hide();
+
+
+                                }
+                                else {
+                                    $('#result2').text("Correct CNIC. CNIC does not exists in database");
+                                    $('#SubBtn').show();
+
+
+                                }
+                            });
+
+                        });
+
+                    });
+
+                </script>
+
+  @*  @Html.Label("Address")
+
+  <input name="address" placeholder="address"  maxlength="50" required/>*@
+
+     <div class="editor-label">
+            @Html.LabelFor(model => model.address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address)
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
+
 
      @Html.Label("Email")
-  <input type="email" name="email" placeholder="email" data-minlength="40" maxlength="40"   required/>
+  <input type="email" id="c" name="email"  data-minlength="40" maxlength="40"   required/>
    
 
     
-    @Html.Label("Phone No")
+    @*@Html.Label("Phone No")
 
-  <input name="phoneNo" type="text" placeholder="phoneNo" data-minlength="11"  maxlength="20" required/>
-  <button style=" background:#b200ff;">SignUp</button>
+  <input  name="phoneNo" type="number" max="99999999999999999999"  min="100000000" placeholder="phoneNo"  required/>
+  *@
+
+    
+
+     <div id="result3"></div>
+     
+                <script>
+
+
+                    $(document).ready(function () {
+
+
+
+                        $('#c').focusout(function () {
+
+                            var email1 = $('#c').val();
+                            $.getJSON("/TeacherSignUp/CheckEmail?email=" + email1, function (data) {
+                                if (data) {
+                                    $('#result3').text("Email already exists in database");
+                                    $('#SubBtn').hide();
+
+
+                                }
+                                else {
+                                    $('#result3').text("Correct Email. Email does not exists in database");
+                                    $('#SubBtn').show();
+
+
+                                }
+                            });
+
+                        });
+
+                    });
+
+                </script>
+
+    <div class="editor-label">
+            @Html.LabelFor(model => model.phoneNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneNo)
+            @Html.ValidationMessageFor(model => model.phoneNo)
+        </div>
+
+    <button style=" background:#b200ff;">SignUp</button>
 </form>
   
   

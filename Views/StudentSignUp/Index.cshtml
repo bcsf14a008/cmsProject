@@ -1,4 +1,5 @@
-﻿@*@model cms.Models.Student*@
+﻿@model cms.Models.Student
+@*@model cms.Models.Student*@
 @{
     ViewBag.Title = "Index";
 }
@@ -12,6 +13,7 @@
   
   
       <link rel="stylesheet" href="~/Content/style.css">
+    <script type="text/javascript" src="~/Scripts/jq.js"></Script>
     @*<script type="text/javascript">
         function()
         {
@@ -102,27 +104,75 @@
     </fieldset>
 }*@
     
-<form method="post" action="~/StudentSignUp/Index1">
+<form method="post" action="~/StudentSignUp/Index">
   <header style=" background:#b200ff;">SignUp</header>
     @Html.Label("ID")
   
   
-  <input name="Id" placeholder="id"  maxlength="10" required/>
+  <input name="Id" id="em1" @*placeholder="id"*@  maxlength="20" required/>
 
-  @Html.Label("Student Name")
+     <div id="result1"></div>
+     
+                <script>
+
+
+                    $(document).ready(function () {
+
+
+
+                        $('#em1').focusout(function () {
+
+                            var email1 = $('#em1').val();
+                            $.getJSON("/StudentSignUp/CheckId?Id=" + email1, function (data) {
+                                if (data) {
+                                    $('#result1').text("Id already exists in database");
+                                    $('#SubBtn').hide();
+
+
+                                }
+                                else {
+                                    $('#result1').text("Correct Id. Id does not exists in database");
+                                    $('#SubBtn').show();
+
+
+                                }
+                            });
+
+                        });
+
+                    });
+
+                </script>
+
+  @*@Html.Label("Student Name")
   
-  <input name="name" placeholder="Name"  maxlength="40" required/>
-  
-    @Html.Label("Father Name")
+  <input name="name" placeholder="Name"  maxlength="40" required/>*@
+  <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+   @* @Html.Label("Father Name")
   
    
-  <input name="fname" placeholder="fname"  maxlength="40" required/>
+  <input name="fname" placeholder="fname"  maxlength="40" required/>*@
+
+     <div class="editor-label">
+            @Html.LabelFor(model => model.fname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fname)
+            @Html.ValidationMessageFor(model => model.fname)
+        </div>
    
     @Html.Label("CNIC")
   
-  <input type="text" data-minlenth="13" maxlength="13"   name="cnic"  placeholder="cnic"  required/>
+  <input type="number" id="em" max="9999999999999"  min="1000000000000"   name="cnic"  @*placeholder="cnic"*@  required/>
     <div id="result"></div>
-     @*@Scripts.Render("~/bundles/jquery")
+     
                 <script>
 
 
@@ -141,7 +191,7 @@
 
                                 }
                                 else {
-                                    $('#result').text(" ");
+                                    $('#result').text("Correct CNIC. CNIC does not exists in database");
                                     $('#SubBtn').show();
 
 
@@ -152,19 +202,67 @@
 
                     });
 
-                </script>*@
+                </script>
     @Html.Label("Email")
   
-  <input type="email" name="email" placeholder="email"  maxlength="40" required/>
+  <input type="email"id="email" name="email" @*placeholder="email"*@  maxlength="40" required/>
+     <div id="result2"></div>
+     
+                <script>
 
-    @Html.Label("Address")
+
+                    $(document).ready(function () {
+
+
+
+                        $('#email').focusout(function () {
+
+                            var email = $('#email').val();
+                            $.getJSON("/StudentSignUp/CheckEmail2?Email2=" + email, function (data) {
+                                if (data) {
+                                    $('#result2').text("Email already exists in database");
+                                    $('#SubBtn').hide();
+
+
+                                }
+                                else {
+                                    $('#result2').text("Correct Email. Email does not exists in database");
+                                    $('#SubBtn').show();
+
+
+                                }
+                            });
+
+                        });
+
+                    });
+
+                </script>
+
+   @* @Html.Label("Address")
   
-  <input name="address" placeholder="address"  maxlength="40" required/>
+  <input name="address" placeholder="address"  maxlength="40" required/>*@
+
+    <div class="editor-label">
+            @Html.LabelFor(model => model.address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.address)
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
    
-    @Html.Label("Phone No")
+  @*  @Html.Label("Phone No")
   
-  <input type="text" name="phoneNo" placeholder="phoneNo" data-minlength="11"  maxlength="20" required/>
-  <button style=" background:#b200ff;">SignUp</button>
+  <input type="number" max="99999999999999999999"  min="100000000" name="phoneNo" placeholder="phoneNo"  required/>
+  *@
+     <div class="editor-label">
+            @Html.LabelFor(model => model.phoneNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneNo)
+            @Html.ValidationMessageFor(model => model.phoneNo)
+        </div>
+    <button style=" background:#b200ff;">SignUp</button>
 </form>
   
   
